@@ -42,5 +42,25 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        ...
-        
+        seen = {}                           # hash table to store numbers and their indices
+        for i, num in enumerate(nums):      # O(n)
+            diff = target - num             # Compute needed pair to reach target
+            if diff in seen:                # Check if the pair has been seen
+                return [seen[diff], i]      # Return indices of the pair found
+            else:                           # If not, store the number and its index
+                seen[num] = i               # Store the current number with its index
+
+
+# Time complexity: O(n) because we traverse the list once and each look-up in the table.
+# Space complexity: O(n) as in the worst case, we store all elements in the hash table.
+
+"""
+Explanation:
+
+This method leverages a hash table to track each number's index as we iterate through the list. By calculating the 
+complement (target - current number), we can check if this complement has already been encountered with a constant 
+time complexity hash table lookup. If the complement exists, it means we previously stored a number such that 
+together with the current number, they sum to the target. This approach ensures that we check each number at most 
+once, achieving a time complexity of O(n). The space complexity is also O(n), as we might need to store all numbers 
+in the hash table in the worst case scenario.
+"""
