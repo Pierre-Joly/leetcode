@@ -51,7 +51,7 @@ class Solution:
                 seen[num] = i               # Store the current number with its index
 
 
-# Time complexity: O(n) because we traverse the list once and each look-up in the table.
+# Time complexity: O(n) because we traverse the list once and each look-up in the table is O(1) on average.
 # Space complexity: O(n) as in the worst case, we store all elements in the hash table.
 
 """
