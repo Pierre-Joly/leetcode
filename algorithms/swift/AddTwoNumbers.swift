@@ -45,8 +45,8 @@ public class ListNode {
  
 final class Solution {
     func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-        let dummy_head = ListNode()
-        var current = dummy_head
+        let dummy = ListNode()
+        var current = dummy
         var carry = 0
         var node1 = l1, node2 = l2
 
@@ -62,7 +62,7 @@ final class Solution {
             node1 = node1?.next
             node2 = node2?.next
         }
-        return dummy_head.next
+        return dummy.next
     }
 }
 

@@ -46,8 +46,8 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        dummy_head = ListNode()
-        current = dummy_head
+        dummy = ListNode()
+        current = dummy
         carry = 0
 
         while l1 or l2 or carry:
@@ -59,7 +59,7 @@ class Solution:
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
 
-        return dummy_head.next
+        return dummy.next
 
 
 # Time complexity: The time complexity is O(N) because the algorithm traverses each node of both input linked lists once.

@@ -33,25 +33,9 @@ s consists of English letters, digits, symbols and spaces.
 
 */
 
-import java.util.HashMap;
-import java.util.Map;
-
-class Solution {
-    public int lengthOfLongestSubstring(String s) {
-        Map<Character, Integer> char_map = new HashMap<>();
-        int left = 0;
-        int max_length = 0;
+object Solution {
+    def lengthOfLongestSubstring(s: String): Int = {
         
-        for (int right = 0; right < s.length(); right++) {
-            char current_char = s.charAt(right);
-            if (char_map.containsKey(current_char) && char_map.get(current_char) >= left) {
-                left = char_map.get(current_char) + 1;
-            }
-            char_map.put(current_char, right);
-            max_length = Math.max(max_length, right - left + 1);
-        }
-        
-        return max_length;
     }
 }
 

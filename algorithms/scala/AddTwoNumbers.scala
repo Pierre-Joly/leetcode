@@ -46,11 +46,11 @@ object Solution {
         case (null, null, 0) => null
         case _ => {
           val sum = Option(node1).map(_.x).getOrElse(0) + Option(node2).map(_.x).getOrElse(0) + carry
-          val newNode = new ListNode(sum % 10)
-          newNode.next = go(Option(node1).flatMap(n => Option(n.next)).orNull,
+          val new_node = new ListNode(sum % 10)
+          new_node.next = go(Option(node1).flatMap(n => Option(n.next)).orNull,
                             Option(node2).flatMap(n => Option(n.next)).orNull,
                             sum / 10)
-          newNode
+          new_node
         }
       }
     }
