@@ -35,7 +35,7 @@ s consists of English letters, digits, symbols and spaces.
 
 class Solution {
     func lengthOfLongestSubstring(_ s: String) -> Int {
-        var char_indices = Array(repeating: -1, count: 256)
+        var char_indices = Array(repeating: -1, count: 128)
         var max_length = 0
         var left = 0
 

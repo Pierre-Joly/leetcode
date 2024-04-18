@@ -38,7 +38,7 @@ import java.util.Map;
 
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-    int[] char_indices = new int[256];
+    int[] char_indices = new int[128];
     arrays.fill(char_indices, -1);
     int max_length = 0;
     int left = 0;

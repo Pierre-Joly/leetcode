@@ -41,7 +41,7 @@ using namespace std;
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        vector<int> char_index(256, -1);
+        vector<int> char_index(128, -1);
         int left = 0;
         int max_length = 0;
 
