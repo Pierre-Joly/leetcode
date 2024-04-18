@@ -34,10 +34,24 @@ s consists of English letters, digits, symbols and spaces.
 */
 
 object Solution {
-    def lengthOfLongestSubstring(s: String): Int = {
-        
+  def lengthOfLongestSubstring(s: String): Int = {
+    val charIndex = Array.fill(128)(-1)
+    var left = 0
+    var maxLength = 0
+
+    for ((char, right) <- s.zipWithIndex) {
+      val index = char.toInt
+      if (charIndex(index) >= left) {
+        left = charIndex(index) + 1
+      }
+      charIndex(index) = right
+      maxLength = math.max(maxLength, right - left + 1)
     }
+
+    maxLength
+  }
 }
+
 
 // Time complexity : O(n), where n is the length of the string, because each character in the string is processed exactly once. The direct indexing into the array allows for O(1) time complexity for updating and checking the last seen positions of characters, making this method highly efficient.
 // Space complexity : O(1), or more specifically O(m), where m is the fixed size of the character set (such as 256 for extended ASCII). This fixed space requirement does not scale with the size of the input string but is instead constant, reflecting the bounded nature of the ASCII character set.
