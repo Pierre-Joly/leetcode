@@ -43,24 +43,15 @@ import java.util.Map;
 
 public class Solution {
     public int[] twoSum(int[] nums, int target) {
-        // Create a HashMap to keep track of each number and its index.
         Map<Integer, Integer> seen = new HashMap<>();
-
-        // Iterate through the array using a traditional for loop to have access to the index.
         for (int i = 0; i < nums.length; i++) {
             int num = nums[i];
-            // Calculate the complement that, when added to 'num', equals 'target'.
             int diff = target - num;
-
-            // Check if the complement has already been encountered.
             if (seen.containsKey(diff)) {
-                // If found, return the indices of the two numbers.
                 return new int[] {seen.get(diff), i};
             }
-            // If not found, store the current number and its index in the map.
             seen.put(num, i);
         }
-        // Return an empty array if no solution is found.
         return new int[] {};
     }
 }

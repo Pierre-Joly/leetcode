@@ -42,13 +42,13 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        seen = {}                           # hash table to store numbers and their indices
-        for i, num in enumerate(nums):      # O(n)
-            diff = target - num             # Compute needed pair to reach target
-            if diff in seen:                # Check if the pair has been seen
-                return [seen[diff], i]      # Return indices of the pair found
-            else:                           # If not, store the number and its index
-                seen[num] = i               # Store the current number with its index
+        seen = {}
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in seen:
+                return [seen[diff], i]
+            else:
+                seen[num] = i
 
 
 # Time complexity: O(n) because we traverse the list once and each look-up in the table is O(1) on average.

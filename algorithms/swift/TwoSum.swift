@@ -40,19 +40,17 @@ Only one valid answer exists.
 
 class Solution {
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-        var seen = [Int: Int]() // Dictionary to keep track of numbers and their indices
+        var seen = [Int: Int]()
 
         for (i, num) in nums.enumerated() {
-            let diff = target - num // Calculate the needed complement to reach the target
+            let diff = target - num
             if let index = seen[diff] {
-                // If the complement is found, return the indices as the result
                 return [index, i]
             }
-            // Store the number and its index in the dictionary
             seen[num] = i
         }
 
-        return [] // Return an empty array if no two numbers sum up to the target
+        return []
     }
 }
 

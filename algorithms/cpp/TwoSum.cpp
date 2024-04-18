@@ -46,28 +46,16 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(const vector<int>& nums, int target) {
-        // Use an unordered_map to track the indices of the numbers.
-        // 'seen' maps each number to its index in the 'nums' array.
         unordered_map<int, int> seen;
-        
-        // Pre-allocate space for the hash table to avoid rehashing costs during insertion.
         seen.reserve(nums.size());
-
-        // Iterate through the array. The index is 'i' and 'num' is the current number.
         for (int i = 0; i < nums.size(); i++) {
             int num = nums[i];
-            // Calculate the complement of 'num' that would sum up to 'target'.
             int diff = target - num;
-
-            // Check if the complement has been previously seen in the array.
             if (seen.find(diff) != seen.end()) {
-                // If found, return the indices of 'diff' and 'num'.
                 return {seen[diff], i};
             }
-            // If not found, store the current number and its index in the hash table.
             seen[num] = i;
         }
-        // Return an empty vector if no two numbers sum up to the target.
         return {};
     }
 };
