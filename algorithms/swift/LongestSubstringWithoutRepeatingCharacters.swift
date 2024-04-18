@@ -35,39 +35,35 @@ s consists of English letters, digits, symbols and spaces.
 
 class Solution {
     func lengthOfLongestSubstring(_ s: String) -> Int {
-        var char_map = [Character: Int]()
-        var left = 0
+        var char_indices = Array(repeating: -1, count: 256)
         var max_length = 0
-        var right = 0
-        for char in s {
-            if let last_index = char_map[char], last_index >= left {
-                left = last_index + 1
+        var left = 0
+
+        for (right, char) in s.enumerated() {
+            let index = Int(char.asciiValue!)
+            if char_indices[index] >= left {
+                left = char_indices[index] + 1
             }
-            char_map[char] = right
+            char_indices[index] = right
             max_length = max(max_length, right - left + 1)
-            right += 1
         }
+
         return max_length
-    }
+}
 }
 
-// Time complexity: O(n) because we traverse the string once and each look-up in the table is O(1) on average.
-// Space complexity: O(min(m, n)) as in the worst case, we store one of each unique character in the hash table, where m is the character set size.
+// Time complexity : O(n), where n is the length of the string, because each character in the string is processed exactly once. The direct indexing into the array allows for O(1) time complexity for updating and checking the last seen positions of characters, making this method highly efficient.
+// Space complexity : O(1), or more specifically O(m), where m is the fixed size of the character set (such as 256 for extended ASCII). This fixed space requirement does not scale with the size of the input string but is instead constant, reflecting the bounded nature of the ASCII character set.
 
 /*
 Explanation:
 
-This method employs a hash table to track the last seen position of each character as we iterate through the string.
-The primary goal is to maintain a sliding window that contains no repeated characters. We utilize two pointers, `left` 
-and `right`, which define the current window of the substring without duplicates. Each time we encounter a character,
-we check if it's in the hash table and whether its index is within the current window bounds defined by `left`. If it is,
-we adjust the `left` pointer to the index right after the last occurrence of this character, effectively removing the
-repeated character from our current window. 
+This method employs a fixed-size array (or vector) to track the last seen positions of each character, assuming the input string consists only of ASCII characters. This array acts like a direct access table, where the index represents the character, and the value at each index represents the last seen position of that character in the string.
 
-This allows us to always maintain a window without repeating characters by moving the `left` pointer intelligently.
-The length of the current window is calculated as `right - left + 1`, and we continuously update `max_length` to store 
-the maximum length encountered. The time complexity is O(n) because each character is checked once, and the hash table 
-operations (insert and check) are O(1) on average. The space complexity is O(min(m, n)), where m is the size of the
-character set, which could potentially be all unique characters in the string, but is typically less and bounded by
-the size of the character set.
+The primary goal is to maintain a sliding window that contains no repeated characters. We utilize two pointers, `left` and `right`, which define the bounds of the current window of the substring without duplicates. As we iterate through the string:
+- Each character's ASCII value is used to check its last occurrence directly from the array.
+- If the character was previously seen and its recorded position is within the bounds of the current window (`left` to `right`), the `left` pointer is adjusted to just after the last occurrence of this character. This adjustment effectively removes the duplicate character from the current window.
+- The current position of `right` is then recorded as the new last seen position of the character in the array.
+
+This strategy allows us to always maintain a window without repeating characters by moving the `left` pointer intelligently whenever a duplicate is detected. The length of the current window is calculated as `right - left + 1`, and we continuously update `max_length` to ensure it holds the maximum length encountered during the traversal.
 */
