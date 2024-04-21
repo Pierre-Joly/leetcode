@@ -40,7 +40,7 @@ class Solution:
             nums1, nums2 = nums2, nums1
 
         x, y = len(nums1), len(nums2)
-        odd = (x+y)%2 == 0
+        even = (x+y)%2 == 0
         low, high = 0, x
         middle = (x + y + 1) >> 1
 
@@ -55,7 +55,7 @@ class Solution:
             minRightY = float('inf') if partitionY == y else nums2[partitionY]
             
             if maxLeftX <= minRightY and maxLeftY <= minRightX:
-                if odd:
+                if even:
                     return (max(maxLeftX, maxLeftY) + min(minRightX, minRightY)) / 2.0
                 else:
                     return max(maxLeftX, maxLeftY)
