@@ -43,7 +43,7 @@ public:
     const vector<int>& Nums2 = (nums1.size() <= nums2.size()) ? nums2 : nums1;
     
     int x = Nums1.size(), y = Nums2.size();
-    bool odd = !!((x+y)%2 == 0);
+    bool even = (x+y)%2 == 0;
     int low = 0, high = x;
     int middle = (x + y + 1) / 2;
 
@@ -57,7 +57,7 @@ public:
         int minRightY = (partitionY == y) ? INT_MAX : Nums2[partitionY];
 
         if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
-            if (odd) {
+            if (even) {
                 return (max(maxLeftX, maxLeftY) + min(minRightX, minRightY)) / 2.0;
             } else {
                 return max(maxLeftX, maxLeftY);
