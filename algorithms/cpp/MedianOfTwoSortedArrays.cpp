@@ -48,24 +48,24 @@ public:
     int middle = (x + y + 1) / 2;
 
     while (low <= high) {
-        int partitionX = (low + high) / 2;
-        int partitionY = middle - partitionX;
+        int partition_X = (low + high) / 2;
+        int partition_Y = middle - partition_X;
 
-        int maxLeftX = (partitionX == 0) ? INT_MIN : Nums1[partitionX - 1];
-        int minRightX = (partitionX == x) ? INT_MAX : Nums1[partitionX];
-        int maxLeftY = (partitionY == 0) ? INT_MIN : Nums2[partitionY - 1];
-        int minRightY = (partitionY == y) ? INT_MAX : Nums2[partitionY];
+        int max_left_X = (partition_X == 0) ? INT_MIN : Nums1[partition_X - 1];
+        int min_right_X = (partition_X == x) ? INT_MAX : Nums1[partition_X];
+        int max_left_Y = (partition_Y == 0) ? INT_MIN : Nums2[partition_Y - 1];
+        int min_right_Y = (partition_Y == y) ? INT_MAX : Nums2[partition_Y];
 
-        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
+        if (max_left_X <= min_right_Y && max_left_Y <= min_right_X) {
             if (even) {
-                return (max(maxLeftX, maxLeftY) + min(minRightX, minRightY)) / 2.0;
+                return (max(max_left_X, max_left_Y) + min(min_right_X, min_right_Y)) / 2.0;
             } else {
-                return max(maxLeftX, maxLeftY);
+                return max(max_left_X, max_left_Y);
             }
-        } else if (maxLeftX > minRightY) {
-            high = partitionX - 1;
+        } else if (max_left_Y > min_right_Y) {
+            high = partition_X - 1;
         } else {
-            low = partitionX + 1;
+            low = partition_X + 1;
         }
     }
     throw runtime_error("No valid partition found");

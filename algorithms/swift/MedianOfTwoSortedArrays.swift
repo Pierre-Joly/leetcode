@@ -47,26 +47,24 @@ class Solution {
         let middle = (x + y + 1) / 2
         
         while low <= high {
-            let partitionX = (low + high) / 2
-            let partitionY = middle - partitionX
+            let partition_X = (low + high) / 2
+            let partition_Y = middle - partition_X
             
-            let maxLeftX = partitionX == 0 ? Int.min : Nums1[partitionX - 1]
-            let minRightX = partitionX == x ? Int.max : Nums1[partitionX]
-            let maxLeftY = partitionY == 0 ? Int.min : Nums2[partitionY - 1]
-            let minRightY = partitionY == y ? Int.max : Nums2[partitionY]
+            let max_left_X = partition_X == 0 ? Int.min : Nums1[partition_X - 1]
+            let min_right_X = partition_X == x ? Int.max : Nums1[partition_X]
+            let max_left_Y = partition_Y == 0 ? Int.min : Nums2[partition_Y - 1]
+            let min_right_Y = partition_Y == y ? Int.max : Nums2[partition_Y]
 
-            if maxLeftX <= minRightY && maxLeftY <= minRightX {
+            if max_left_X <= min_right_Y && max_left_Y <= min_right_X {
                 if even {
-                    let maxOfLeft = max(maxLeftX, maxLeftY)
-                    let minOfRight = min(minRightX, minRightY)
-                    return Double(maxOfLeft + minOfRight) / 2.0
+                    return Double(max(max_left_X, max_left_Y) + min(min_right_X, min_right_Y)) / 2.0
                 } else {
-                    return Double(max(maxLeftX, maxLeftY))
+                    return Double(max(max_left_X, max_left_Y))
                 }
-            } else if maxLeftX > minRightY {
-                high = partitionX - 1
+            } else if max_left_X > min_right_Y {
+                high = partition_X - 1
             } else {
-                low = partitionX + 1
+                low = partition_X + 1
             }
         }
         
