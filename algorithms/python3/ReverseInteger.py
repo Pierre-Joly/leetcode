@@ -47,8 +47,8 @@ class Solution:
 
         return sign * reversed_x
 
-# Time Complexity**: O(n), where n is the number of digits in the integer. Each digit is processed exactly once.
-# Space Complexity**: O(1), as the solution uses a constant amount of space regardless of the input size.
+# Time Complexity: O(n), where n is the number of digits in the integer. Each digit is processed exactly once.
+# Space Complexity: O(1), as the solution uses a constant amount of space regardless of the input size.
 
 """
 Explanation:
