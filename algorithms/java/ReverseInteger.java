@@ -45,11 +45,11 @@ class Solution {
         while(x != 0) {
             int pop = x%10;
             x = x / 10;
-            System.out.println(pop);
-            System.out.println(x);
+
             if (reversed_x > max_div_10 || (reversed_x == max_div_10 && pop > max_mod_10)) {
                 return 0;
             }
+            
             reversed_x *= 10;
             reversed_x += pop;
         }
