@@ -40,11 +40,11 @@ Only one valid answer exists.
 
 class Solution {
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-        var seen = [Int: Int]()
+        var seen: [Int: Int] = [Int: Int]()
 
-        for (i, num) in nums.enumerated() {
-            let diff = target - num
-            if let index = seen[diff] {
+        for (i, num): (Int, Int) in nums.enumerated() {
+            let diff: Int = target - num
+            if let index: Int = seen[diff] {
                 return [index, i]
             }
             seen[num] = i

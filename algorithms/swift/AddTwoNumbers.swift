@@ -43,17 +43,17 @@ public class ListNode {
     public init(_ val: Int, _ next: ListNode?) { self.val = val; self.next = next; }
 }
  
-final class Solution {
+class Solution {
     func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-        let dummy = ListNode()
-        var current = dummy
-        var carry = 0
-        var node1 = l1, node2 = l2
+        let dummy: ListNode = ListNode()
+        var current: ListNode = dummy
+        var carry: Int = 0
+        var node1: ListNode? = l1, node2: ListNode? = l2
 
         while node1 != nil || node2 != nil || carry != 0 {
-            let val1 = node1?.val ?? 0
-            let val2 = node2?.val ?? 0
-            let sum = val1 + val2 + carry
+            let val1: Int = node1?.val ?? 0
+            let val2: Int = node2?.val ?? 0
+            let sum: Int = val1 + val2 + carry
 
             carry = sum / 10
             current.next = ListNode(sum % 10)

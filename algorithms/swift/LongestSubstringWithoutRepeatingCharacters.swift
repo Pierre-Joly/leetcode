@@ -35,12 +35,12 @@ s consists of English letters, digits, symbols and spaces.
 
 class Solution {
     func lengthOfLongestSubstring(_ s: String) -> Int {
-        var char_indices = Array(repeating: -1, count: 128)
-        var max_length = 0
-        var left = 0
+        var char_indices: [Int] = Array(repeating: -1, count: 128)
+        var max_length: Int = 0
+        var left: Int = 0
 
-        for (right, char) in s.enumerated() {
-            let index = Int(char.asciiValue!)
+        for (right, char):(Int, String.Element) in s.enumerated() {
+            let index: Int = Int(char.asciiValue!)
             if char_indices[index] >= left {
                 left = char_indices[index] + 1
             }

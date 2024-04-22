@@ -37,23 +37,23 @@ nums2.length == n
 class Solution {
     func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
         // Assign Nums1 to the smaller array and Nums2 to the larger array
-        let (Nums1, Nums2) = nums1.count <= nums2.count ? (nums1, nums2) : (nums2, nums1)
+        let (Nums1, Nums2): ([Int], [Int]) = nums1.count <= nums2.count ? (nums1, nums2) : (nums2, nums1)
         
-        let x = Nums1.count
-        let y = Nums2.count
-        let even = (x + y) % 2 == 0
-        var low = 0
-        var high = x
-        let middle = (x + y + 1) / 2
+        let x: Int = Nums1.count
+        let y: Int = Nums2.count
+        let even: Bool = (x + y) % 2 == 0
+        var low: Int = 0
+        var high: Int = x
+        let middle: Int = (x + y + 1) / 2
         
         while low <= high {
-            let partition_X = (low + high) / 2
-            let partition_Y = middle - partition_X
+            let partition_X: Int = (low + high) / 2
+            let partition_Y: Int = middle - partition_X
             
-            let max_left_X = partition_X == 0 ? Int.min : Nums1[partition_X - 1]
-            let min_right_X = partition_X == x ? Int.max : Nums1[partition_X]
-            let max_left_Y = partition_Y == 0 ? Int.min : Nums2[partition_Y - 1]
-            let min_right_Y = partition_Y == y ? Int.max : Nums2[partition_Y]
+            let max_left_X: Int = partition_X == 0 ? Int.min : Nums1[partition_X - 1]
+            let min_right_X: Int = partition_X == x ? Int.max : Nums1[partition_X]
+            let max_left_Y: Int = partition_Y == 0 ? Int.min : Nums2[partition_Y - 1]
+            let min_right_Y: Int = partition_Y == y ? Int.max : Nums2[partition_Y]
 
             if max_left_X <= min_right_Y && max_left_Y <= min_right_X {
                 if even {
