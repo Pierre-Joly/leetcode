@@ -53,12 +53,6 @@ class Solution:
 """
 Explanation:
 
-
-"""
-
-"""
-Explanation:
-
 It starts by determining the sign of the input to handle positive and negative numbers uniformly.
 The integer is then processed in its absolute form, extracting digits from the end and building the reversed integer incrementally. Each digit is obtained using the modulus operation (`x % 10`) and
 the integer is then truncated by dividing by 10 (x // 10). These digits are reassembled into the new integer
