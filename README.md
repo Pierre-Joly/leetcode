@@ -2,9 +2,6 @@
 LeetCode
 ========
 
-### LeetCode Algorithm
-
-
 | # | Title | Solution | Difficulty |
 |---| ----- | -------- | ---------- |
 |1|[Two Sum](https://leetcode.com/problems/two-sum/) |[C++](./algorithms/cpp/TwoSum.cpp),[Java](./algorithms/java/TwoSum.java),[Python3](./algorithms/python3/TwoSum.py),[Swift](./algorithms/swift/TwoSum.swift), |Easy|
